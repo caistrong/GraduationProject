@@ -172,8 +172,8 @@ def UserSimilarity(train):
             item_users[i].add(u)
 
     # 计算用户之间共同评分的矩阵
-    C = dict()  # 二维
-    N = dict()  # 单维
+    C = dict()  # 二维 C[u][v] 为u和v这两个用户共同评价过的电影数
+    N = dict()  # 单维 N[u] 为u这个用户评价过的电影数
     for i, users in item_users.items():
         for u in users:
             if u not in N:
