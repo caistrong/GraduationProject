@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `movie_info`;
 CREATE TABLE `movie_info` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
   `title` varchar(128) COLLATE utf8mb4_unicode_520_ci NOT NULL COMMENT '标题',
@@ -32,3 +33,16 @@ CREATE TABLE `movie_info` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `doubanId_UNIQUE` (`doubanId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=623 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci
+
+DROP TABLE IF EXISTS `user_info`;
+CREATE TABLE `user_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `openId` varchar(45) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT '用户openId',
+  `sessionKey` varchar(45) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT '会话密钥',
+  `unionId` varchar(45) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT '用户开放平台唯一标识',
+  `userInfo` varchar(512) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT '用户信息',
+  `createdTime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updateTime` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `openId_UNIQUE` (`openId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
